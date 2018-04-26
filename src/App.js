@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import FilmListing from './FilmListing';
+import FilmDetails from './FilmDetails';
+import Films from './TMDB';
+import FilmRow from './FilmRow';
+
 
 class App extends Component {
   render() {
+    let titles = Films.films.map((data) => {
+      let Year = new Date(data.release_date);
+      return <FilmRow title={data.title}
+      id={data.id}
+      path = {data.poster_path}
+      year = {Year.getFullYear()}
+      />
+    });
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="film-library">
+      <FilmListing title={titles} />
+      <FilmDetails />
       </div>
+
     );
   }
 }
