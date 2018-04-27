@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import Films from './TMDB';
-import FilmListing from './FilmListing.jsx';
-import FilmPoster from './FilmPoster.jsx';
+import FilmPoster from './FilmPoster';
+import Fave from './Fave';
 
-function FilmRow(props) {
-  return (
-      <div className="film-row">
-        <FilmPoster path={props.path} />
+class FilmRow extends Component {
+  handleDetailsClick(film) {
+    console.log('Fetching details for ' + film.title);
+  }
+  render() {
+    return (
+        <div onClick={()=> this.handleDetailsClick(this.props.film)} className="film-row">
+         <FilmPoster film={this.props.film} />
+
         <div className="film-summary">
-          <h1> {props.title} </h1>
-          <p>{props.year}</p>
+        <Fave />
+          <h1>{this.props.film.title}</h1>
+          <p>{new Date(this.props.film.release_date).getFullYear()}</p>
         </div>
       </div>
-      )
+    )
+  }
 }
 
-export default FilmRow;
+export default FilmRow
