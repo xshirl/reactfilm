@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import TMDB from './TMDB';
 
-class FilmPoster extends Component {
+export default class FilmPoster extends Component {
+
   render() {
     const posterUrl = 'https://image.tmdb.org/t/p/w780/' + this.props.film.poster_path
-
     return (
-         <img src={posterUrl} alt="" />
+      <img src={posterUrl} alt="" />
     )
   }
 }
-
-export default FilmPoster

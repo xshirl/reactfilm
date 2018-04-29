@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import TMDB from './TMDB';
 
-class FilmDetails extends Component {
+export default class FilmDetails extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="film-details">
@@ -9,5 +13,3 @@ class FilmDetails extends Component {
     )
   }
 }
-
-export default FilmDetails
